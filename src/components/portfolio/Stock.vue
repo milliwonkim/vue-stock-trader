@@ -21,7 +21,7 @@
                     <button
                             class="btn btn-success"
                             @click="sellStock"
-                            :disabled="insufficientQuantity || quantity <= 0 || !Number.isInteger(quantity)"
+                            :disabled="insufficientQuantity || quantity <= 0"
                     >{{ insufficientQuantity ? 'Not enough' : 'Sell' }}
                     </button>
                 </div>
@@ -37,33 +37,33 @@
 </style>
 
 <script>
-    import {mapActions} from 'vuex';
+    import { mapActions } from 'vuex';
 
     export default {
         props: ['stock'],
-        data() {
+        data () {
             return {
-                quantity: 0
-            }
+                quantity: 0,
+            };
         },
         computed: {
-          insufficientQuantity() {
+          insufficientQuantity () {
               return this.quantity > this.stock.quantity;
-          }
+          },
         },
         methods: {
             ...mapActions({
-                placeSellOrder: 'sellStock'
+                placeSellOrder: 'sellStock',
             }),
-            sellStock() {
+            sellStock () {
                 const order = {
                     stockId: this.stock.id,
                     stockPrice: this.stock.price,
-                    quantity: this.quantity
+                    quantity: this.quantity,
                 };
                 this.placeSellOrder(order);
                 this.quantity = 0;
-            }
-        }
-    }
+            },
+        },
+    };
 </script>

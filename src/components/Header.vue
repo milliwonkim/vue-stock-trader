@@ -39,35 +39,35 @@
     import {mapActions} from 'vuex';
 
     export default {
-        data() {
+        data () {
           return {
-              isDropdownOpen: false
-          }
+              isDropdownOpen: false,
+          };
         },
         computed: {
-            funds() {
+            funds () {
                 return this.$store.getters.funds;
-            }
+            },
         },
         methods: {
             ...mapActions({
                 randomizeStocks: 'randomizeStocks',
-                fetchData: 'loadData'
+                fetchData: 'loadData',
             }),
-            endDay() {
+            endDay () {
                 this.randomizeStocks();
             },
-            saveData() {
+            saveData () {
                 const data = {
                     funds: this.$store.getters.funds,
                     stockPortfolio: this.$store.getters.stockPortfolio,
-                    stocks: this.$store.getters.stocks
+                    stocks: this.$store.getters.stocks,
                 };
                 this.$http.put('data.json', data);
             },
-            loadData() {
+            loadData () {
                 this.fetchData();
-            }
-        }
-    }
+            },
+        },
+    };
 </script>

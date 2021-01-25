@@ -1,22 +1,56 @@
+// .eslintrc.js
+
 module.exports = {
   root: true,
-  env: {
-    node: true
-  },
-  extends: ["plugin:vue/essential", "@vue/standard"],
+  extends: [
+    'plugin:vue/essential'
+  ],
   parserOptions: {
-    parser: "babel-eslint"
+    parser: 'babel-eslint',
+    ecmaVersion: 2017,
+    sourceType: 'module'
+  },
+  plugins: [
+    'html',
+    'vue'
+  ],
+  env: {
+    browser: true
   },
   rules: {
-    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
-    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
-    // allow paren-less arrow functions
-    "arrow-parens": 0,
-    semi: 0,
-    // allow async-await
-    "generator-star-spacing": 0,
-    quotes: [2, "double", { avoidEscape: false }],
-    // allow debugger during development
-    "no-debugger": process.env.NODE_ENV === "production" ? 2 : 0
+    'generator-star-spacing': 'off',
+    'indent': ['error', 4],
+    'brace-style': ['error', '1tbs'],
+    'semi': ['error', 'always'],
+    'no-console': 'error',
+    'comma-dangle': ['error', {
+      'arrays': 'never',
+      'objects': 'always-multiline',
+      'imports': 'never',
+      'exports': 'never',
+      'functions': 'never'
+    }],
+    'no-multiple-empty-lines': ['error', {
+      'max': 2,
+      'maxBOF': 1
+    }],
+    'no-undef': 'error',
+    'space-in-parens': ['error', 'never'],
+    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+    'space-before-function-paren': [
+      'error',
+      'always'
+    ],
+    'quotes': ['error', 'single'],
+    'space-before-blocks': [
+      'error',
+      'always'
+    ],
+    'indent': 'off',
+    'vue/script-indent': ['warn', 2, {
+      'baseIndent': 1
+    }],
+    'no-empty': 'error',
+    'no-duplicate-imports': 'error'
   }
 };

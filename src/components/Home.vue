@@ -11,9 +11,9 @@
 <script>
     export default {
         computed: {
-            funds() {
+            funds () {
                 return this.$store.getters.funds;
-            }
-        }
-    }
+            },
+        },
+    };
 </script>

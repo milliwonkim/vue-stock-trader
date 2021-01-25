@@ -1,6 +1,6 @@
 <template>
     <div>
-        <app-stock v-for="stock in stocks" :stock="stock"></app-stock>
+        <app-stock v-for="stock in stocks" :key='stock.id' :stock="stock"></app-stock>
     </div>
 </template>
 
@@ -9,12 +9,12 @@
 
     export default {
         components: {
-            appStock: Stock
+            appStock: Stock,
         },
         computed: {
-            stocks() {
+            stocks () {
                 return this.$store.getters.stocks;
-            }
-        }
-    }
+            },
+        },
+    };
 </script>
